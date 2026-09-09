@@ -27,10 +27,7 @@ export default async function Page({
 
   return (
     <>
-      <Rails
-        phone={dict.contact.info.phone}
-        scrollLabel={dict.landing.scroll}
-      />
+      <Rails scrollLabel={dict.landing.scroll} />
       <Header
         lang={lang}
         t={{

@@ -1,13 +1,12 @@
 /** Aloqa ma'lumotlari — matnli qismlari lug'atdan, texnik qismlari shu yerdan. */
 export const CONTACTS = {
-  phoneHref: '+998732530000',
   email: 'info@kokanddryfruits.uz',
   /** Google Maps'dagi tasdiqlangan joy kartochkasi (qidiruv havolasi emas). */
   mapsUrl:
     'https://www.google.com/maps/place/Kokand+Dry+Fruits/@40.3956076,70.7681325,17z/data=!3m1!4b1!4m6!3m5!1s0x38ba8d0041083a4b:0x5f2de8a58ace187d!8m2!3d40.3956076!4d70.7707128!16s%2Fg%2F11xkdbnglb',
 };
 
-/** WhatsApp uchun alohida raqam — saytdagi statsionar telefondan boshqa. */
+/** WhatsApp raqami. */
 export const WHATSAPP = '998910590011';
 /** O'sha raqamning ko'rinadigan ko'rinishi. */
 export const WHATSAPP_DISPLAY = '+998 91 059 00 11';
