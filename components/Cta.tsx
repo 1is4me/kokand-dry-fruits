@@ -1,5 +1,5 @@
 import ContactForm from './ContactForm';
-import { PhoneIcon, WhatsAppIcon, MapPinIcon, SOCIAL_ICONS } from './Icons';
+import { WhatsAppIcon, MapPinIcon, SOCIAL_ICONS } from './Icons';
 import {
   ACTIVE_SOCIALS,
   CONTACTS,
@@ -40,10 +40,6 @@ export default function Cta({
           <p className="cta__price reveal-up">{dict.products.priceNote}</p>
 
           <div className="cta__contacts reveal-up">
-            <a href={`tel:${CONTACTS.phoneHref}`} dir="ltr">
-              <PhoneIcon className="cta__lineicon" />
-              <span>{info.phone}</span>
-            </a>
             <a
               href={`https://wa.me/${WHATSAPP}`}
               target="_blank"

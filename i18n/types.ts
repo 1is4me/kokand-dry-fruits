@@ -113,8 +113,6 @@ export type Dictionary = {
       title: string;
       address: string;
       addressLabel: string;
-      phone: string;
-      phoneLabel: string;
       email: string;
       emailLabel: string;
       hours: string;

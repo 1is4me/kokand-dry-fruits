@@ -4,6 +4,7 @@ import {
   COMPANY,
   EXPORT_REGIONS,
   GACC,
+  WHATSAPP,
 } from '@/lib/contacts';
 import { defaultLocale, htmlLang, locales, type Locale } from '@/i18n/config';
 import { absolute } from '@/lib/site';
@@ -64,7 +65,8 @@ const organization = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      telephone: `+${CONTACTS.phoneHref.replace(/\D/g, '')}`,
+      // Statsionar raqam saytdan olib tashlandi — ommaviy raqam shu bittasi.
+      telephone: `+${WHATSAPP}`,
       email: CONTACTS.email,
       contactType: 'sales',
       areaServed: [...EXPORT_REGIONS],

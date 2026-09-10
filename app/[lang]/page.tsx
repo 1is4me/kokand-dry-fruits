@@ -29,10 +29,7 @@ export default async function Page({
   return (
     <>
       <OrganizationSchema lang={lang} />
-      <Rails
-        phone={dict.contact.info.phone}
-        scrollLabel={dict.landing.scroll}
-      />
+      <Rails scrollLabel={dict.landing.scroll} />
       <Header
         lang={lang}
         t={{
