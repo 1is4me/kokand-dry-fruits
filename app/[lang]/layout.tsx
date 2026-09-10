@@ -8,6 +8,7 @@ import {
   localeDir,
   locales,
 } from '@/i18n/config';
+import { SITE_URL } from '@/lib/site';
 import Preloader from '@/components/Preloader';
 import ScrollEffects from '@/components/ScrollEffects';
 import '../globals.css';
@@ -52,9 +53,7 @@ export async function generateMetadata({
   const dict = await getDictionary(lang);
 
   return {
-    metadataBase: new URL(
-      process.env.NEXT_PUBLIC_SITE_URL ?? 'https://kokanddryfruits.uz',
-    ),
+    metadataBase: new URL(SITE_URL),
     title: dict.meta.title,
     description: dict.meta.description,
     alternates: {
@@ -71,6 +70,14 @@ export async function generateMetadata({
       type: 'website',
       images: ['/assets/brand/logo-emblem.png'],
     },
+    /*
+     * Search Console tasdiqlash. DNS TXT yozuvi qulayroq (butun domenni
+     * qamraydi), lekin registrarga kirish bo'lmasa — shu meta teg yetadi.
+     * GOOGLE_SITE_VERIFICATION bo'sh bo'lsa teg umuman chizilmaydi.
+     */
+    verification: process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : undefined,
   };
 }
 

@@ -12,6 +12,7 @@ import Certification from '@/components/Certification';
 import Team from '@/components/Team';
 import Cta from '@/components/Cta';
 import Footer from '@/components/Footer';
+import { OrganizationSchema } from '@/components/StructuredData';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { isLocale } from '@/i18n/config';
 
@@ -27,6 +28,7 @@ export default async function Page({
 
   return (
     <>
+      <OrganizationSchema lang={lang} />
       <Rails
         phone={dict.contact.info.phone}
         scrollLabel={dict.landing.scroll}

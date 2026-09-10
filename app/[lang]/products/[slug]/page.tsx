@@ -9,8 +9,9 @@ import ProductSpecs from '@/components/ProductSpecs';
 import OtherProducts from '@/components/OtherProducts';
 import Cta from '@/components/Cta';
 import { getDictionary } from '@/i18n/get-dictionary';
-import { isLocale, locales } from '@/i18n/config';
+import { defaultLocale, htmlLang, isLocale, locales } from '@/i18n/config';
 import { PRODUCTS, getProduct } from '@/lib/products';
+import { ProductSchema } from '@/components/StructuredData';
 
 export function generateStaticParams() {
   return locales.flatMap((lang) =>
@@ -36,9 +37,12 @@ export async function generateMetadata({
     description: item.intro,
     alternates: {
       canonical: `/${lang}/products/${slug}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `/${l}/products/${slug}`]),
-      ),
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [htmlLang[l], `/${l}/products/${slug}`]),
+        ),
+        'x-default': `/${defaultLocale}/products/${slug}`,
+      },
     },
     openGraph: {
       title: `${name} — Kokand Dry Fruits`,
@@ -61,6 +65,14 @@ export default async function ProductPage({
 
   return (
     <>
+      <ProductSchema
+        lang={lang}
+        slug={slug}
+        name={dict.products[product.key].name}
+        description={dict.productPage.items[product.key].intro}
+        image={product.poster ?? product.image}
+        productsLabel={dict.nav.products}
+      />
       <Header
         lang={lang}
         t={{
