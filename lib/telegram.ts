@@ -60,6 +60,40 @@ export const send = (chatId: number | string, text: string) =>
     disable_web_page_preview: true,
   });
 
+export type InlineButton = { text: string; callback_data: string };
+
+/** Tugmali xabar — til tanlash uchun ishlatiladi. */
+export const sendWithKeyboard = (
+  chatId: number | string,
+  text: string,
+  keyboard: InlineButton[][],
+) =>
+  call('sendMessage', {
+    chat_id: chatId,
+    text,
+    parse_mode: 'HTML',
+    disable_web_page_preview: true,
+    reply_markup: { inline_keyboard: keyboard },
+  });
+
+/**
+ * Tugma bosilganini Telegramga tasdiqlaydi. Chaqirilmasa mijozning
+ * ekranida tugma cheksiz "yuklanmoqda" holatida qolib ketadi.
+ */
+export const answerCallback = (callbackQueryId: string, text?: string) =>
+  call('answerCallbackQuery', {
+    callback_query_id: callbackQueryId,
+    ...(text ? { text } : {}),
+  });
+
+/** Tanlangandan keyin tugmalarni olib tashlaydi — ikkinchi marta bosilmasin. */
+export const clearKeyboard = (chatId: number | string, messageId: number) =>
+  call('editMessageReplyMarkup', {
+    chat_id: chatId,
+    message_id: messageId,
+    reply_markup: { inline_keyboard: [] },
+  });
+
 /** Matnsiz xabarni (rasm, fayl, ovoz) o'z holicha ko'chiradi. */
 export const copyMessage = (
   toChat: number | string,
