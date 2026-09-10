@@ -198,6 +198,8 @@ async function handleMessage(msg: TgMessage | undefined) {
           'Har bir xabar sarlavhasida <b>🌐 Til</b> satri bo‘ladi — mijoz qaysi tilda yozgani va bu qanday aniqlangani.',
           '',
           'Javob berish uchun o’sha xabarga <b>reply</b> qiling — matningiz to’g’ridan-to’g’ri mijozga boradi. Javobni mijozning tilida yozing.',
+          '',
+          'Mijoz nimani ko’rishini tekshirmoqchi bo’lsangiz — <code>/lang</code> yozing: til tanlash tugmalari chiqadi.',
         ].join('\n'),
       );
       return;
