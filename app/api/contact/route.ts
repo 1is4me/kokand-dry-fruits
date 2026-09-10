@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getProduct } from '@/lib/products';
 import { escapeHtml, ownerIds, sendToOwners } from '@/lib/telegram';
+import { SITE_URL } from '@/lib/site';
 
 export const runtime = 'nodejs';
 
@@ -51,7 +52,8 @@ function formatMessage(lead: Lead): string {
     .filter(([, v]) => v)
     .map(([k, v]) => `<b>${k}:</b> ${escapeHtml(v as string)}`)
     .join('\n');
-  return `🌰 <b>New enquiry — kokanddryfruits.uz</b>\n\n${body}`;
+  const host = SITE_URL.replace(/^https?:\/\//, '');
+  return `🌰 <b>New enquiry — ${host}</b>\n\n${body}`;
 }
 
 /**

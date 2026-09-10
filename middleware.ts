@@ -39,6 +39,12 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Statik fayllar, API yo'llari va Next ichki yo'llari chetlab o'tiladi.
-  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico).*)'],
+  /*
+   * Statik fayllar, API yo'llari va Next ichki yo'llari chetlab o'tiladi.
+   * `.*\\..*` — nomida nuqta bor har qanday yo'l (robots.txt, sitemap.xml,
+   * favicon.ico, rasm va shriftlar). Busiz /robots.txt til prefiksiga
+   * yo'naltirilardi va Google uni o'qiy olmasdi. Til yo'llarida nuqta yo'q,
+   * shuning uchun ular baribir shu matcher'ga tushadi.
+   */
+  matcher: ['/((?!api|_next|assets|.*\\..*).*)'],
 };

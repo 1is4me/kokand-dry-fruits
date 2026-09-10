@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import Cta from '@/components/Cta';
 import ProductCatalog from '@/components/ProductCatalog';
 import { getDictionary } from '@/i18n/get-dictionary';
-import { isLocale, locales } from '@/i18n/config';
+import { defaultLocale, htmlLang, isLocale, locales } from '@/i18n/config';
 import { PRODUCTS } from '@/lib/products';
 
 export function generateStaticParams() {
@@ -26,7 +26,12 @@ export async function generateMetadata({
     description: dict.products.sectionSubtitle,
     alternates: {
       canonical: `/${lang}/products`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/products`])),
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [htmlLang[l], `/${l}/products`]),
+        ),
+        'x-default': `/${defaultLocale}/products`,
+      },
     },
   };
 }
